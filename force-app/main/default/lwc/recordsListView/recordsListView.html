@@ -1,0 +1,8 @@
+<template>
+    <c-records-list-header></c-records-list-header>
+    <template for:each={recordData} for:item='record'>
+        <div key={record}>
+            <c-records-list-card this-record={record}></c-records-list-card>
+        </div>
+    </template>
+</template>

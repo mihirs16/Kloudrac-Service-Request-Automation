@@ -1,0 +1,9 @@
+.card-title__custom {
+    font-size: 20px;
+    display: flex; 
+    align-items: center;
+}
+
+.card-title__custom-text {
+    margin-left: 10px;
+}
