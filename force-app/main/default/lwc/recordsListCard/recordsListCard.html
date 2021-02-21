@@ -1,5 +1,6 @@
 <template>
-    <div class="slds-m-around_small card__custom">
+    <!-- desktop view -->
+    <div class="slds-m-around_small card__custom desktop">
         <div class="card-body__custom">
             <div class="slds-card__body slds-card__body_inner card-col__custom">
                 <h2 class="slds-card__header-title">
@@ -14,6 +15,38 @@
             <div class="slds-card__body slds-card__body_inner card-col__custom">
                 <c-dynamic-strength-icon priority={row.Priority__c}></c-dynamic-strength-icon>
             </div> 
+        </div>
+    </div>
+
+    <!-- mobile view -->
+    <div class="slds-m-around_small card__custom mobile">
+        <div class="card-body__custom">
+            <div class="card-mobile-header__custom">
+                <div>
+                    <div class="slds-card__body slds-card__body_inner card-col__custom">
+                        <h2 class="slds-card__header-title">
+                            <span>{row.Name}</span>
+                        </h2>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner card-col__custom">
+                        <span class="slds-badge">{row.Status__c}</span>
+                    </div>
+                </div>
+                <div class="slds-card__body slds-card__body_inner card-col__custom">
+                    <c-dynamic-strength-icon priority={row.Priority__c}></c-dynamic-strength-icon>
+                </div> 
+            </div>
+            <div class="card-mobile-content__custom">
+                <div class="slds-card__body slds-card__body_inner card-mobile-row__custom">
+                    <div>Assigned To</div>
+                    <div>{row.Assigned_To__c}</div>
+                </div>
+                <div class="slds-card__body slds-card__body_inner card-mobile-row__custom">
+                    <div>Opened On</div>
+                    <div>{row.Opened_On__c}</div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
