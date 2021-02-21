@@ -3,15 +3,13 @@
         <div class="card-body__custom">
             <div class="slds-card__body slds-card__body_inner card-col__custom">
                 <h2 class="slds-card__header-title">
-                    <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
-                        <span>{thisRecord}</span>
-                    </a>
+                    <span>{row.Name}</span>
                 </h2>
             </div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">Status</div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">Priority</div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">Open Date</div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">Assigned To</div>
+            <div class="slds-card__body slds-card__body_inner card-col__custom">{row.Assigned_To__c}</div>
+            <div class="slds-card__body slds-card__body_inner card-col__custom">{row.Opened_On__c}</div>
+            <div class="slds-card__body slds-card__body_inner card-col__custom">{row.Status__c}</div>
+            <div class="slds-card__body slds-card__body_inner card-col__custom">{row.Priority__c}</div>
         </div>
     </div>
 </template>

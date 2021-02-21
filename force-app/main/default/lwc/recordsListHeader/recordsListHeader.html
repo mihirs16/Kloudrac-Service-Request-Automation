@@ -1,13 +1,9 @@
 <template>
     <div class="slds-m-around_small card__custom">
-        <div class="slds-card__body slds-card__body_inner card-col__custom">
-            <h2 class="slds-card__header-title">
-                <span>Ticket Number</span>
-            </h2>
-        </div>
-        <div class="slds-card__body slds-card__body_inner card-col__custom">Opened Date</div>
-        <div class="slds-card__body slds-card__body_inner card-col__custom">Assigned To</div>
-        <div class="slds-card__body slds-card__body_inner card-col__custom">Status</div>
-        <div class="slds-card__body slds-card__body_inner card-col__custom">Priority</div>
+        <template for:each={headers} for:item='item'>
+            <div key={item}>
+                <div class="slds-card__body slds-card__body_inner card-col__custom">{item}</div>
+            </div>    
+        </template>
     </div>
 </template>
