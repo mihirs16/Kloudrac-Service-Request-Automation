@@ -1,0 +1,25 @@
+.slds-page-header__col-title {
+    display: flex;
+}
+
+.slds-page-header__col-title > div {
+    margin-right: 10px;
+}
+
+.slds-page-header__name {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.slds-page-header__row {
+    display: flex;
+}
+
+.nav-btn-grp__custom {
+    align-self: center;
+}
+
+.header-icon-container__custom {
+    align-self: center;
+}
