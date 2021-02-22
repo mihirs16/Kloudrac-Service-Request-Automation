@@ -1,13 +1,18 @@
 <template>
     <lightning-card style="background-color: #E0E8F2;">
-        <div class="card-title__custom" slot="title">
-            <div>
-                <lightning-icon icon-name="standard:record" size="medium"></lightning-icon>
+        <div class="card-header__custom">
+            <div class="card-title__custom">
+                <div>
+                    <lightning-icon icon-name="standard:record" size="medium"></lightning-icon>
+                </div>
+                <div class="card-title__custom-text">
+                    All Tickets
+                </div>
             </div>
-            <div class="card-title__custom-text">
-                All Tickets
+            <div class="card-mod__custom">
+                <c-records-list-modifier></c-records-list-modifier>
             </div>
-        </div> 
+        </div>
         <div class="slds-m-around_large">
             <c-records-list-view headers={headers} rows={listOfRecords}></c-records-list-view>
         </div>

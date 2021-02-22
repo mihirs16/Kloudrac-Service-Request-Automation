@@ -1,8 +1,8 @@
 /**
-* @Name: TicketController
-* @Author: Mihir Singh
-* @CreateDate: 20/02/2021
-* @Description: Controller for handling Ticket__c data
+* name: TicketController
+* author: Mihir Singh
+* createDate: 22-02-2021
+* description: controller for handling Ticket__c data
 */
 public with sharing class TicketController {
 

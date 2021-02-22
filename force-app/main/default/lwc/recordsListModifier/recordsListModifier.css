@@ -1,0 +1,11 @@
+.list-mod__custom {
+    display: flex;
+}
+
+.list-mod__custom > div {
+    margin-right: 5px;
+}
+
+.search-box__custom {
+    display: block;
+}    
