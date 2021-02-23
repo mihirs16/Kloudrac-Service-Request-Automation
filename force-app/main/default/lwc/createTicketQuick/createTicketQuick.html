@@ -1,0 +1,13 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <lightning-input class="slds-m-vertical_medium" label="Subject" required></lightning-input>
+            <lightning-input-rich-text class="slds-m-vertical_medium" label="Description" label-visible="true"></lightning-input-rich-text>
+            <div class="slds-grid slds-gutters slds-m-vertical_medium">
+                <div class="slds-col"><lightning-combobox placeholder="Select Priority" label="Priority" options={PRIORITY_OPTIONS}></lightning-combobox></div>
+                <div class="slds-col"><lightning-combobox placeholder="Select Org" label="Org Type" options={ORG_TYPE_OPTIONS}></lightning-combobox></div>        
+            </div>
+            <lightning-input class="slds-m-vertical_medium" label="Primary Contact" disabled></lightning-input>
+        </div>
+    </lightning-card>
+</template>
