@@ -1,0 +1,12 @@
+<design:component >
+    <flexipage:template>
+        <flexipage:region name="Row1Col1" defaultWidth="SMALL"></flexipage:region>
+        <flexipage:region name="Row1Col2" defaultWidth="SMALL"></flexipage:region>
+        <flexipage:region name="Row1Col3" defaultWidth="SMALL"></flexipage:region>
+        <flexipage:region name="Row1Col4" defaultWidth="SMALL"></flexipage:region>
+        <flexipage:region name="Row1Col5" defaultWidth="MEDIUM"></flexipage:region>
+        <flexipage:region name="Row2Col1" defaultWidth="MEDIUM"></flexipage:region>
+        <flexipage:region name="Row3Col1" defaultWidth="MEDIUM"></flexipage:region>
+        <flexipage:region name="Row3Col2" defaultWidth="MEDIUM"></flexipage:region>
+    </flexipage:template>
+</design:component>
