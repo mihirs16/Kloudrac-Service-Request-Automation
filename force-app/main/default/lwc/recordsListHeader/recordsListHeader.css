@@ -4,8 +4,8 @@
     box-shadow: 0px 0px 3px 0px rgba(171, 171, 171, 0.8);
     border-radius: 2.5px;
 
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
     background-color:rgba(171, 171, 171);
     border-left: 5px solid rgba(171, 171, 171);
@@ -17,7 +17,6 @@
 }
 
 .card-col__custom {
-    width: 200px;
     display: flex;
     justify-content: center;
 }

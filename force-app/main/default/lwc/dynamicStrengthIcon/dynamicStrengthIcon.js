@@ -7,17 +7,19 @@
 * Description: independent child component for displaying strength as per priority
 */
 import { api, LightningElement, track } from 'lwc';
+import p1Icon from './p1.html';
+import p2Icon from './p2.html';
+import p3Icon from './p3.html';
 
 export default class DynamicStrengthIcon extends LightningElement {
     @api priority;
-    @track strength;
-
-    renderedCallback() {
+    
+    render () {
         switch(this.priority) {
-            case 'P1': this.strength = 1; break;
-            case 'P2': this.strength = 2; break;
-            case 'P3': this.strength = 3; break;
-            default: this.strength = 0;
+            case 'P1': return p1Icon;
+            case 'P2': return p2Icon;
+            case 'P3': return p3Icon;
+            default: break;
         }
     }
 }
