@@ -1,0 +1,22 @@
+.slds-card__custom {
+    height: 200px;
+}
+
+.card-title__custom {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card-title__custom {
+    font-size: 22.5px;
+}
+
+.card-count__custom {
+    color: #19323C;
+    font-size: 50px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
