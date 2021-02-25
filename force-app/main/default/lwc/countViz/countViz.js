@@ -14,8 +14,8 @@ export default class CountViz extends LightningElement {
     @api vizSubtitle = 'By Priority';
     @api objName = 'Ticket__c';
     @api filterBy = 'None';
-    @api filter = 'P3';
-    @track count = 0;
+    @api filter = 'None';
+    @track count = " ";
 
     renderedCallback() {
         getCountToDisplay({
