@@ -44,5 +44,25 @@
                 </div>
             </div>
         </div>
+        <div class="slds-grid">
+            <div class="slds-col">
+                {!v.Row1Col5}
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col">
+                {!v.Row2Col1}
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col">
+                {!v.Row3Col1}
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col">
+                {!v.Row3Col2}
+            </div>
+        </div>
     </aura:if>
 </aura:component>	
