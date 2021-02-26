@@ -1,0 +1,9 @@
+<template>
+    <template if:true={listOfRecentComments}>
+        <template for:each={listOfRecentComments} for:item='comment'>
+            <div key={comment.Id}>
+                <c-recent-comments-card comment={comment}></c-recent-comments-card>
+            </div>
+        </template>
+    </template>
+</template>
