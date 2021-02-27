@@ -8,7 +8,7 @@
 */
 import { api, LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import getRecentComments from '@salesforce/apex/TicketController.recentTicketCommentsForThisUser';
+import getRecentComments from '@salesforce/apex/DataService.recentTicketCommentsForThisUser';
 
 export default class RecentComments extends LightningElement {
     

@@ -13,4 +13,11 @@ public with sharing class DataService {
         return ticketController.AllTicketsForThisUser;
     }
 
+    // get most recently added Ticket_Comments__c for this user
+    @AuraEnabled
+    public static List<Ticket_Comments__c> recentTicketCommentsForThisUser(Integer numberOfRecentComments){
+        TicketCommentController ticketCommentController = new TicketCommentController(numberOfRecentComments);
+        return ticketCommentController.RecentTicketCommentsForThisUser;
+    }
+
 }
