@@ -1,3 +1,9 @@
 <template>
-    
+    <template if:true={comment}>
+        <div class="card__custom slds-m-around_medium slds-p-around_large">
+            <div>
+                {comment.Id}
+            </div>
+        </div>  
+    </template>
 </template>

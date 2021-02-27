@@ -1,9 +1,23 @@
 <template>
-    <template if:true={listOfRecentComments}>
-        <template for:each={listOfRecentComments} for:item='comment'>
-            <div key={comment.Id}>
-                <c-recent-comments-card comment={comment}></c-recent-comments-card>
+    <lightning-card class="comment-list__custom">
+        <div class="card-header__custom">
+            <div class="card-title__custom">
+                <div>
+                    <lightning-icon icon-name="standard:feedback" size="medium"></lightning-icon>
+                </div>
+                <div class="card-title__custom-text">
+                    Recent Comments
+                </div>
             </div>
-        </template>
-    </template>
+        </div>
+        <div class="slds-m-around_large">
+            <template if:true={listOfRecentComments}>
+                <template for:each={listOfRecentComments} for:item='comment'>
+                    <div key={comment.Id}>
+                        <c-recent-comments-card comment={comment}></c-recent-comments-card>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
 </template>
