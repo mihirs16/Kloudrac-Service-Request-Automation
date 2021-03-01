@@ -4,7 +4,7 @@
     box-shadow: 0px 0px 3px 0px rgba(171, 171, 171, 0.8);
     border-radius: 2.5px;
     border-left: 5px solid white;
-    font-size: smaller;
+    font-size: small;
 }
 
 .slds-feed:hover {

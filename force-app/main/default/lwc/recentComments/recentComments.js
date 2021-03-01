@@ -12,19 +12,14 @@ import getRecentComments from '@salesforce/apex/DataService.recentTicketComments
 
 export default class RecentComments extends LightningElement {
     
-    @track listOfRecentComments;
-    @api numOfRecentComments = 5;
+    @track listOfTickets;
 
     constructor() {
         super();
         
-        getRecentComments({ numberOfRecentComments: this.numOfRecentComments ? this.numOfRecentComments : 5 })
+        getRecentComments()
         .then((result) => {
-            for (var i = 0; i < result.length; i++) {
-                var Created_On__c = new Date(result[i].Opened_On__c);
-                result[i].Opened_On__c = Created_On__c.getDate().toString() + '-' + Created_On__c.getMonth().toString() + '-' + Created_On__c.getFullYear().toString(); 
-            }
-            this.listOfRecentComments = result;
+            this.listOfTickets = result;
             console.log(result);
         })
         .catch(err => console.log(err));

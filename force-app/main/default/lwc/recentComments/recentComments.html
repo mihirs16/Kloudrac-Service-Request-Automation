@@ -11,10 +11,10 @@
             </div>
         </div>
         <div class="slds-m-around_large">
-            <template if:true={listOfRecentComments}>
-                <template for:each={listOfRecentComments} for:item='comment'>
-                    <div key={comment.Id}>
-                        <c-recent-comments-card comment={comment}></c-recent-comments-card>
+            <template if:true={listOfTickets}>
+                <template for:each={listOfTickets} for:item='ticket'>
+                    <div key={ticket.Id}>
+                        <c-recent-comments-card ticket={ticket}></c-recent-comments-card>
                     </div>
                 </template>
             </template>

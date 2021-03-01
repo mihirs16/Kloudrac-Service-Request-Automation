@@ -1,20 +1,25 @@
 <template>
-    <template if:true={comment}>
-            <div class="slds-feed slds-p-around_x-small slds-m-bottom_small">
-                <article class="slds-post">
-                    <header class="slds-post__header slds-media">
-                        <div class="slds-media__body">
-                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-                                <p>
-                                    <a href="#" title="Jason Rodgers">{comment.CreatedBy.Name}</a> - {comment.Ticket__r.Name} &nbsp;<span class="bckg-text__custom">{comment.Days_Ago__c} Days Ago</span>
-                                </p>
+    <template if:true={ticket}>
+        <template for:each={ticket.Ticket_Comment__r} for:item='ticketComment'>
+            <div key={ticketComment.Id}>
+                <div class="slds-feed slds-p-around_x-small slds-m-bottom_small">
+                    <article class="slds-post">
+                        <header class="slds-post__header slds-media">
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                    <p>
+                                        <a href="#" title="Jason Rodgers">{ticketComment.CreatedBy.Name}</a> - {ticket.Name} &nbsp;<span class="bckg-text__custom">{ticketComment.Days_Ago__c} Days Ago</span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </header>
-                    <lightning-formatted-rich-text
-                        value={comment.Content__c}
-                    ></lightning-formatted-rich-text>
-                </article>
+                        </header>
+                        <lightning-formatted-rich-text
+                            value={ticketComment.Content__c}
+                        ></lightning-formatted-rich-text>
+                    </article>
+                </div>
             </div>
+        </template>
+    </template>
     </template>
 </template>

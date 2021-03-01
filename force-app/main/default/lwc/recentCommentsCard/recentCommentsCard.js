@@ -6,8 +6,8 @@
 * for-mobile: yes
 * description: child of recentComments for displaying each recent comment
 */
-import { api, LightningElement } from 'lwc';
+import { api, LightningElement, track } from 'lwc';
 
 export default class RecentCommentsCard extends LightningElement {
-    @api comment;
+    @api ticket;
 }
