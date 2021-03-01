@@ -16,7 +16,7 @@ public with sharing class TicketController {
                     Name, 
                     Assigned_To__c, 
                     Last_Modified_On__c, 
-                    Opened_On__c, 
+                    CreatedDate, 
                     Status__c,
                     Priority__c
                 FROM Ticket__C

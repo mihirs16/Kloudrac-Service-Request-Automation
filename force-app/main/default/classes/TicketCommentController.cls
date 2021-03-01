@@ -22,8 +22,10 @@ public inherited sharing class TicketCommentController {
                     Id,
                     Name,
                     Content__c,
-                    Created_On__c,
-                    Ticket__c
+                    CreatedDate,
+                    Days_Ago__c,
+                    Ticket__r.Name,
+                    CreatedBy.Name
                 FROM Ticket_Comments__c
                 WHERE Ticket__r.CreatedById = :thisUserId
                 ORDER BY Created_On__c

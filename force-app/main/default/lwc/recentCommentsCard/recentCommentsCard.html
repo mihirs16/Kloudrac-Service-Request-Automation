@@ -1,9 +1,20 @@
 <template>
     <template if:true={comment}>
-        <div class="card__custom slds-m-around_medium slds-p-around_large">
-            <div>
-                {comment.Id}
+            <div class="slds-feed slds-p-around_x-small slds-m-bottom_small">
+                <article class="slds-post">
+                    <header class="slds-post__header slds-media">
+                        <div class="slds-media__body">
+                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                <p>
+                                    <a href="#" title="Jason Rodgers">{comment.CreatedBy.Name}</a> - {comment.Ticket__r.Name} &nbsp;<span class="bckg-text__custom">{comment.Days_Ago__c} Days Ago</span>
+                                </p>
+                            </div>
+                        </div>
+                    </header>
+                    <lightning-formatted-rich-text
+                        value={comment.Content__c}
+                    ></lightning-formatted-rich-text>
+                </article>
             </div>
-        </div>  
     </template>
 </template>
