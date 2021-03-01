@@ -1,5 +1,5 @@
 <template>
-    <template if:true={ticket}>
+    <template if:true={ticket.Ticket_Comment__r}>
         <template for:each={ticket.Ticket_Comment__r} for:item='ticketComment'>
             <div key={ticketComment.Id}>
                 <div class="slds-feed slds-p-around_x-small slds-m-bottom_small">
@@ -20,6 +20,5 @@
                 </div>
             </div>
         </template>
-    </template>
     </template>
 </template>
