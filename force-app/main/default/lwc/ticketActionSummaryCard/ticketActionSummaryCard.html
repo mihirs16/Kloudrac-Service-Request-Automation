@@ -1,0 +1,16 @@
+<template>
+    <template if:true={ticket}>
+        <div class="slds-m-around_small slds-p-around_small card__custom mobile">
+            <div class="card-body__custom">
+                <div class="slds-grid slds-grid_align-spread">
+                    <div class="slds-col">
+                        <h2>{ticket.Name}</h2>
+                    </div>
+                    <div class="slds-col">
+                        <c-dynamic-strength-icon priority={ticket.Priority__c}></c-dynamic-strength-icon>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </template>
+</template>
