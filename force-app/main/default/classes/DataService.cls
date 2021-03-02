@@ -20,4 +20,15 @@ public with sharing class DataService {
         return ticketCommentController.LatestTicketCommentsForLast90;
     }
 
+    // get tickets according to pending replies
+    @AuraEnabled
+    public static Map<String, Object> ticketsWithPendingReplies(){
+        TicketController ticketController = new TicketController();
+        Map<String, Object> mapToReturn = new Map<String, Object> ();
+        mapToReturn.put('PendingCustomerReplyTickets', ticketController.PendingCustomerReplyTickets);
+        mapToReturn.put('PendingAdminReplyTickets', ticketController.PendingAdminReplyTickets);
+
+        return mapToReturn;
+    }
+    
 }

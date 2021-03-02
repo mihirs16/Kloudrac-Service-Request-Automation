@@ -6,22 +6,71 @@
 */
 public with sharing class TicketController {
 
+    // current user details
+    User ThisUser;
+
+    // initialize current user details
+    public TicketController() {
+        Id thisUserId = UserInfo.getUserId();
+        this.ThisUser = [
+            SELECT 
+                Id, 
+                Name, 
+                ProfileId, 
+                Profile.Name 
+            FROM User 
+            WHERE Id = :thisUserId
+        ][0];
+    }
+
     // get list of tickets property 
     public List<Ticket__c> AllTicketsForThisUser {
         get {
-            Id thisUserId = UserInfo.getUserId();
             return [
                 SELECT 
                     Id,
                     Name, 
                     Assigned_To__c, 
-                    Last_Modified_On__c, 
                     CreatedDate, 
                     Status__c,
                     Priority__c
-                FROM Ticket__C
-                WHERE CreatedById = :thisUserId
+                FROM Ticket__c
+                WHERE CreatedById = :ThisUser.Id
             ];
+        }
+    }
+
+    // get list of tickets with reply pending from customer
+    public List<Ticket__c> PendingCustomerReplyTickets {
+        get {
+            String dynSOQL = 'SELECT Id, Name, Assigned_To__c, CreatedDate, Status__c, Priority__c FROM Ticket__c ';
+            String resolvedId = ThisUser.Id;
+
+            if (ThisUser.Profile.Name == 'Standard User') {
+                dynSOQL += 'WHERE CreatedById = :resolvedId AND Status__c = \'Pending Customer Reply\'';
+            } else if (ThisUser.Profile.Name == 'System Administrator') {
+                dynSOQL += 'WHERE Assigned_To__c = :resolvedId AND Status__c = \'Pending Customer Reply\'';
+            }
+
+            List<Ticket__c> ticketsToReturn = Database.query(dynSOQL);
+            return ticketsToReturn;    
+        }
+    }
+
+    // get list of tickets with reply pending from admins
+    public List<Ticket__c> PendingAdminReplyTickets {
+        get {
+            String dynSOQL = 'SELECT Id, Name, Assigned_To__c, CreatedDate, Status__c, Priority__c FROM Ticket__c ';
+            String resolvedId = ThisUser.Id;
+
+            if (ThisUser.Profile.Name == 'Standard User') {
+                dynSOQL += 'WHERE CreatedById = :resolvedId AND Status__c = \'Customer Replied\'';
+            } else if (ThisUser.Profile.Name == 'System Administrator') {
+                dynSOQL += 'WHERE Assigned_To__c = :resolvedId AND Status__c = \'Customer Replied\'';
+            }
+
+            List<Ticket__c> ticketsToReturn = Database.query(dynSOQL);
+            return ticketsToReturn;    
         }
     }
 
