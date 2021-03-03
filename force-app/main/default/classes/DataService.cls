@@ -30,5 +30,12 @@ public with sharing class DataService {
 
         return mapToReturn;
     }
+
+    // get tickets with escalated status
+    @AuraEnabled
+    public static List<Ticket__c> escalatedTickets(){
+        TicketController ticketController = new TicketController();
+        return ticketController.EscalatedTickets;
+    }
     
 }

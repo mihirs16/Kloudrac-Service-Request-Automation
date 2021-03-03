@@ -40,6 +40,23 @@ public with sharing class TicketController {
         }
     }
 
+    // get list of tickets with escalated status
+    public List<Ticket__c> EscalatedTickets {
+        get {
+            return [
+                SELECT
+                    Id,
+                    Name,
+                    Assigned_To__c,
+                    CreatedDate,
+                    Status__c,
+                    Priority__c
+                FROM Ticket__c
+                WHERE Status__c = 'Escalated'
+            ];
+        }
+    }
+
     // get list of tickets with reply pending from customer
     public List<Ticket__c> PendingCustomerReplyTickets {
         get {

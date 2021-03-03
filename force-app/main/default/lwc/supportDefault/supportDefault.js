@@ -28,8 +28,8 @@ export default class SupportDefault extends LightningElement {
         getTickets()
         .then((result) => {
             for (var i = 0; i < result.length; i++) {
-                var thisOpenedOn = new Date(result[i].Opened_On__c);
-                result[i].Opened_On__c = thisOpenedOn.getDate().toString() + '-' + thisOpenedOn.getMonth().toString() + '-' + thisOpenedOn.getFullYear().toString(); 
+                var thisOpenedOn = new Date(result[i].CreatedDate);
+                result[i].CreatedDate = thisOpenedOn.getDate().toString() + '-' + thisOpenedOn.getMonth().toString() + '-' + thisOpenedOn.getFullYear().toString(); 
             }
             this.listOfRecords = result;
             console.log(result);
