@@ -24,3 +24,9 @@
 .header-icon-container__custom {
     align-self: center;
 }
+
+@media only screen and (max-width: 768px) {
+    .nav-btn-grp__custom {
+        display: none;
+    }
+}
