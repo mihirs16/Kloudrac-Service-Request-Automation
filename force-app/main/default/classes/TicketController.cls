@@ -60,7 +60,7 @@ public with sharing class TicketController {
     // get list of tickets with reply pending from customer
     public List<Ticket__c> PendingCustomerReplyTickets {
         get {
-            String dynSOQL = 'SELECT Id, Name, Assigned_To__c, CreatedDate, Status__c, Priority__c FROM Ticket__c ';
+            String dynSOQL = 'SELECT Id, Name, Subject__c, Assigned_To__r.FirstName, CreatedDate, Status__c, Priority__c FROM Ticket__c ';
             String resolvedId = ThisUser.Id;
 
             if (ThisUser.Profile.Name == 'Standard User') {
@@ -77,7 +77,7 @@ public with sharing class TicketController {
     // get list of tickets with reply pending from admins
     public List<Ticket__c> PendingAdminReplyTickets {
         get {
-            String dynSOQL = 'SELECT Id, Name, Assigned_To__c, CreatedDate, Status__c, Priority__c FROM Ticket__c ';
+            String dynSOQL = 'SELECT Id, Name, Subject__c, Assigned_To__r.FirstName, CreatedDate, Status__c, Priority__c FROM Ticket__c ';
             String resolvedId = ThisUser.Id;
 
             if (ThisUser.Profile.Name == 'Standard User') {

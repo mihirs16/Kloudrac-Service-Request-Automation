@@ -1,11 +1,11 @@
 <template>
     <template if:true={metadataName.data}>
-        <div class="slds-grid slds-wrap">
-            <div class="slds-col slds-col-size_2-of-4 slds-m-around_small">
-                <lightning-card>
+        <lightning-card>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-col-size_2-of-4 slds-m-right_xx-small">
                     <div class="card-header__custom">
                         <div>
-                            <lightning-icon icon-name="utility:quick_text" size="medium"></lightning-icon>
+                            <lightning-icon icon-name="utility:quick_text" size="small"></lightning-icon>
                         </div>
                         <div class="card-title__custom-text">
                             Pending From {customerName}
@@ -20,13 +20,11 @@
                             </template>
                         </template>
                     </div>
-                </lightning-card>
             </div>
-            <div class="slds-col slds-col-size_2-of-4 slds-m-around_small">
-                <lightning-card>
+            <div class="slds-col slds-col-size_2-of-4">
                     <div class="card-header__custom">
                         <div>
-                            <lightning-icon icon-name="utility:comments" size="medium"></lightning-icon>
+                            <lightning-icon icon-name="utility:comments" size="small"></lightning-icon>
                         </div>
                         <div class="card-title__custom-text">
                             Pending From Kloudrac
@@ -41,8 +39,8 @@
                             </template>
                         </template>
                     </div>
-                </lightning-card>
-            </div>
-        </div>
+                </div>
+            </div>    
+        </lightning-card>
     </template>
 </template>

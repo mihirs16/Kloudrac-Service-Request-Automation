@@ -21,6 +21,7 @@ public inherited sharing class TicketCommentController {
                         SELECT
                             Id,
                             Name,
+                            Subject__c,
                             Content__c,
                             CreatedDate,
                             Days_Ago__c,

@@ -3,12 +3,30 @@
         <div class="slds-m-around_small slds-p-around_small card__custom mobile">
             <div class="card-body__custom">
                 <div class="slds-grid slds-grid_align-spread">
-                    <div class="slds-col">
-                        <h2>{ticket.Name}</h2>
-                    </div>
+                    <div class="slds-col"><b>{ticket.Name}</b></div>
                     <div class="slds-col">
                         <c-dynamic-strength-icon priority={ticket.Priority__c}></c-dynamic-strength-icon>
                     </div> 
+                </div>
+                <div class="slds-grid slds-grid_align-spread field__custom">
+                    <div class="slds-col">
+                        <b>Subject</b>
+                    </div>
+                    <div class="slds-col">
+                        <p class="slds-truncate">
+                            {ticket.Subject__c}
+                        </p>
+                    </div>
+                </div>
+                <div class="slds-grid slds-grid_align-spread field__custom">
+                    <div class="slds-col">
+                        <b>Assigned To</b>
+                    </div>
+                    <div class="slds-col">
+                        <p class="slds-truncate">
+                            {ticket.Assigned_To__r.FirstName}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
