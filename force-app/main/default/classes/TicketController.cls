@@ -30,7 +30,7 @@ public with sharing class TicketController {
                 SELECT 
                     Id,
                     Name, 
-                    Assigned_To__c, 
+                    Assigned_To__r.Name,
                     CreatedDate, 
                     Status__c,
                     Priority__c
@@ -47,7 +47,7 @@ public with sharing class TicketController {
                 SELECT
                     Id,
                     Name,
-                    Assigned_To__c,
+                    Assigned_To__r.Name,
                     CreatedDate,
                     Status__c,
                     Priority__c

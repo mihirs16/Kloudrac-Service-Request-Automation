@@ -1,18 +1,22 @@
 <template>
     <!-- desktop view -->
     <div class="slds-m-around_small card__custom desktop">
-        <div class="card-body__custom">
-            <div class="slds-card__body slds-card__body_inner card-col__custom">
+        <div class="slds-grid slds-grid_align-space">
+            <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">
                 <h2 class="slds-card__header-title">
                     <span>{row.Name}</span>
                 </h2>
             </div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">{row.Assigned_To__c}</div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">{row.Opened_On__c}</div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">
+            <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">
+                <template if:true={row.Assigned_To__r}>
+                    {row.Assigned_To__r.Name}
+                </template>
+            </div>
+            <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">{row.CreatedDate}</div>
+            <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">
                 <span class="slds-badge">{row.Status__c}</span>
             </div>
-            <div class="slds-card__body slds-card__body_inner card-col__custom">
+            <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">
                 <c-dynamic-strength-icon priority={row.Priority__c}></c-dynamic-strength-icon>
             </div> 
         </div>
@@ -39,11 +43,15 @@
             <div class="card-mobile-content__custom">
                 <div class="slds-card__body slds-card__body_inner card-mobile-row__custom">
                     <div>Assigned To</div>
-                    <div>{row.Assigned_To__c}</div>
+                    <template if:true={row.Assigned_To__r}>
+                        <div>
+                            {row.Assigned_To__r.Name}
+                        </div>
+                    </template>
                 </div>
                 <div class="slds-card__body slds-card__body_inner card-mobile-row__custom">
                     <div>Opened On</div>
-                    <div>{row.Opened_On__c}</div>
+                    <div>{row.CreatedDate}</div>
                 </div>
             </div>
         </div>
