@@ -9,12 +9,13 @@
 import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { createRecord } from 'lightning/uiRecordApi';
+import { NavigationMixin } from 'lightning/navigation';
 import TICKET_OBJECT from '@salesforce/schema/Ticket__c';
 import TICKET_SUBJECT from '@salesforce/schema/Ticket__c.Subject__c';
 import TICKET_DESCRIPTION from '@salesforce/schema/Ticket__c.Description__c';
 import TICKET_PRIORITY from '@salesforce/schema/Ticket__c.Priority__c';
 
-export default class CreateTicketQuick extends LightningElement {
+export default class CreateTicketQuick extends NavigationMixin(LightningElement) {
 
     @track ticketData = {
         subject: '',
@@ -40,6 +41,25 @@ export default class CreateTicketQuick extends LightningElement {
             { label: 'P2', value: 'P2' },
             { label: 'P3', value: 'P3' }
         ]; 
+    }
+
+    navigateToAllTickets() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__navItemPage',
+            attributes: {
+                apiName: 'Support_Page' 
+            }
+        });
+    }
+
+    navigateToNewTicket() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: 'Ticket__c',
+                actionName: 'new' 
+            }
+        });
     }
 
     newTicket() {
