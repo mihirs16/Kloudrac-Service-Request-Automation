@@ -17,21 +17,23 @@
                     </lightning-button-group>
                 </div>
             </div>
-            <lightning-input field-level-help="Summary of the problem you're facing." class="slds-m-vertical_medium" label="Subject" required></lightning-input>
+            <lightning-input onchange={handleSubjectInput} field-level-help="Summary of the problem you're facing." class="slds-m-vertical_medium" label="Subject" required></lightning-input>
             <lightning-input-rich-text
+                onchange={handleDescriptionInput}
                 class="slds-m-vertical_medium" 
                 label="Description" 
                 label-visible="true"
                 disabled-categories="FORMAT_FONT,FORMAT_TEXT,FORMAT_BODY,ALIGN_TEXT,INSERT_CONTENT,REMOVE_FORMATTING"
             ></lightning-input-rich-text>
             <lightning-combobox
+                onchange={handlePriorityInput}
                 placeholder="Select Priority" 
                 label="Priority" 
                 options={PRIORITY_OPTIONS}
                 required
             ></lightning-combobox>
             <div class="slds-m-around_large slds-align_absolute-center">
-                <lightning-button variant="brand" label="Create Ticket"></lightning-button>
+                <lightning-button onclick={newTicket} variant="brand" label="Create Ticket"></lightning-button>
             </div>
         </div>
     </lightning-card>

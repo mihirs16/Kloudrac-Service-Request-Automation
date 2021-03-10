@@ -34,6 +34,7 @@ public inherited sharing class TicketCommentController {
                 FROM Ticket__c
                 WHERE CreatedById = :thisUserId
                 AND CreatedDate = LAST_N_DAYS:90
+                ORDER BY CreatedDate DESC
             ];
         }
     }

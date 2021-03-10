@@ -7,13 +7,31 @@
 * description: component for creating a new ticket quickly
 */
 import { LightningElement, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { createRecord } from 'lightning/uiRecordApi';
+import TICKET_OBJECT from '@salesforce/schema/Ticket__c';
+import TICKET_SUBJECT from '@salesforce/schema/Ticket__c.Subject__c';
+import TICKET_DESCRIPTION from '@salesforce/schema/Ticket__c.Description__c';
+import TICKET_PRIORITY from '@salesforce/schema/Ticket__c.Priority__c';
 
 export default class CreateTicketQuick extends LightningElement {
-    get ORG_TYPE_OPTIONS() {
-        return [
-            { label: 'Production', value: 'Production' },
-            { label: 'Sandbox', value: 'Sandbox' },
-        ];
+
+    @track ticketData = {
+        subject: '',
+        description: '',
+        priority: ''
+    };
+
+    handleSubjectInput(event) {
+        this.ticketData['subject'] = event.target.value;
+    }
+
+    handleDescriptionInput(event) {
+        this.ticketData['description'] = event.target.value;
+    }
+
+    handlePriorityInput(event) {
+        this.ticketData['priority'] = event.target.value;
     }
 
     get PRIORITY_OPTIONS() {
@@ -22,5 +40,41 @@ export default class CreateTicketQuick extends LightningElement {
             { label: 'P2', value: 'P2' },
             { label: 'P3', value: 'P3' }
         ]; 
+    }
+
+    newTicket() {
+        if (this.ticketData.subject && this.ticketData.description && this.ticketData.priority) {
+            const fields = {};
+            fields[TICKET_SUBJECT.fieldApiName] = this.ticketData.subject;
+            fields[TICKET_DESCRIPTION.fieldApiName] = this.ticketData.description;
+            fields[TICKET_PRIORITY.fieldApiName] = this.ticketData.priority;
+            createRecord({ apiName: TICKET_OBJECT.objectApiName, fields })
+            .then((res) => {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'New Ticket Raised!',
+                        message: `Ticket ${res.fields.Name.value} was raised successfully!`,
+                        variant: 'success'
+                    })
+                );
+            })
+            .catch((err) => {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Couldn\'t Raise Ticket!',
+                        message: err.body.message,
+                        variant: 'error'
+                    })
+                );
+            })
+        } else {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Couldn\'t Raise Ticket!',
+                    message: 'All fields are mandatory',
+                    variant: 'error'
+                })
+            );
+        }
     }
 }
