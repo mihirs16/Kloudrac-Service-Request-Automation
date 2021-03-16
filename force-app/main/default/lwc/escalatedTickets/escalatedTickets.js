@@ -16,9 +16,13 @@ export default class EscalatedTickets extends LightningElement {
         super();
 
         getEscalatedLists()
-        .then((res) => {
-            this.escalatedTickets = res;
-            console.log(res);
+        .then((result) => {
+            for (var i = 0; i < result.length; i++) {
+                var thisOpenedOn = new Date(result[i].CreatedDate);
+                result[i].CreatedDate = thisOpenedOn.getDate().toString() + '-' + thisOpenedOn.getMonth().toString() + '-' + thisOpenedOn.getFullYear().toString(); 
+            }
+            this.escalatedTickets = result;
+            console.log(result);
         })
         .catch((err) => {
             console.log(err);

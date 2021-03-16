@@ -2,13 +2,13 @@
     <template if:true={ticket.Ticket_Comment__r}>
         <template for:each={ticket.Ticket_Comment__r} for:item='ticketComment'>
             <div key={ticketComment.Id}>
-                <div class="slds-feed slds-p-around_x-small slds-m-bottom_small">
+                <div onclick={redirectToRecord} class="slds-feed slds-p-around_x-small slds-m-bottom_small">
                     <article class="slds-post">
                         <header class="slds-post__header slds-media">
                             <div class="slds-media__body">
                                 <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                     <p>
-                                        <a href="#" title="Jason Rodgers">{ticketComment.CreatedBy.Name}</a> - {ticket.Name} &nbsp;<span class="bckg-text__custom">{ticketComment.Days_Ago__c} Days Ago</span>
+                                        <a href="#">{ticketComment.CreatedBy.Name}</a> - {ticket.Name} &nbsp;<span class="bckg-text__custom">{ticketComment.Days_Ago__c} Days Ago</span>
                                     </p>
                                 </div>
                             </div>

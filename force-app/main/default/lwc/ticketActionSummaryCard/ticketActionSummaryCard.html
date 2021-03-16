@@ -1,6 +1,6 @@
 <template>
     <template if:true={ticket}>
-        <div class="slds-m-around_small slds-p-around_small card__custom mobile">
+        <div onclick={redirectToRecord} class="slds-m-around_small slds-p-around_small card__custom mobile">
             <div class="card-body__custom">
                 <div class="slds-grid slds-grid_align-spread">
                     <div class="slds-col"><b>{ticket.Name}</b></div>

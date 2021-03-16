@@ -1,6 +1,6 @@
 <template>
     <!-- desktop view -->
-    <div class="slds-m-around_small card__custom desktop">
+    <div onclick={redirectToRecord} class="slds-m-around_small card__custom desktop">
         <div class="slds-grid slds-grid_align-space">
             <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">
                 <h2 class="slds-card__header-title">
@@ -23,7 +23,7 @@
     </div>
 
     <!-- mobile view -->
-    <div class="slds-m-around_small card__custom mobile">
+    <div onclick={redirectToRecord} class="slds-m-around_small card__custom mobile">
         <div class="card-body__custom">
             <div class="card-mobile-header__custom">
                 <div>

@@ -7,7 +7,21 @@
 * Description: child component of recordsListView to display each row
 */
 import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class RecordsListCard extends LightningElement {
+export default class RecordsListCard extends NavigationMixin(LightningElement) {
     @api row;
+
+    redirectToRecord() {
+        console.log(this.row.Id);
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: this.row.Id,
+                objectApiName: 'Ticket__c',
+                actionName: 'view'
+            }
+        });
+    }
+
 }

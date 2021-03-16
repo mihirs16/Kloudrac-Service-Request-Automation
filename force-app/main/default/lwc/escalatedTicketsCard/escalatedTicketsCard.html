@@ -1,0 +1,27 @@
+<template>
+    <div onclick={redirectToRecord} class="slds-m-around_large card__custom">
+        <div class="card-body__custom">
+            <div class="card-mobile-header__custom">
+                <div>
+                    <div class="slds-card__body slds-card__body_inner card-col__custom">
+                        <h2>
+                            {ticket.Name}
+                        </h2>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner card-col__custom">
+                        <span class="slds-badge">{ticket.Status__c}</span>
+                    </div>
+                </div>
+                <div class="slds-card__body slds-card__body_inner card-col__custom">
+                    <c-dynamic-strength-icon priority={ticket.Priority__c}></c-dynamic-strength-icon>
+                </div> 
+            </div>
+            <div class="card-mobile-content__custom">
+                <div class="slds-card__body slds-card__body_inner card-mobile-ticket__custom slds-grid slds-grid_align-spread">
+                    <div>Opened On</div>
+                    <div>{ticket.CreatedDate}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
