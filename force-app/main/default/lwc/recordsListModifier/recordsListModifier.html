@@ -1,13 +1,18 @@
 <template>
     <div class="list-mod__custom">
         <div class="search-box__custom">
-            <lightning-input type="search" placeholder="Search Records..." label="Search Records" variant="label-hidden"></lightning-input>
+            <lightning-input onchange={handleSearchInput} type="search" placeholder="Search Records..." label="Search Records" variant="label-hidden"></lightning-input>
         </div>
         <div>
-            <lightning-button-icon variant="border-filled" icon-name="utility:search" alternative-text="Search" title="Search"></lightning-button-icon>
+            <lightning-button-icon onclick={handleSearch} variant="border-filled" icon-name="utility:search"  alternative-text="Search" title="Search"></lightning-button-icon>
         </div>
         <div>
-            <lightning-button-icon variant="border-filled" icon-name="utility:filter" alternative-text="Search" title="Search"></lightning-button-icon>
+            <lightning-button-icon-stateful selected={isFilter} onclick={toggleFilter} variant="border-filled" icon-name="utility:filter" alternative-text="Search" title="Search"></lightning-button-icon-stateful>
         </div>
     </div>
+    <template if:true={isFilter}>
+        <div class="slds-m-top_x-small slds-p-around_small filter-window__custom">
+            Filters
+        </div>
+    </template>
 </template>

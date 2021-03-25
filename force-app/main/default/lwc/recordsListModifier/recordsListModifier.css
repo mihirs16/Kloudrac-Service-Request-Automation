@@ -6,6 +6,14 @@
     margin-right: 5px;
 }
 
-.search-box__custom {
-    display: block;
-}    
+.filter-window__custom {
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(171,171,171,0.8);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(171,171,171,0.8);
+    box-shadow: 0px 0px 3px 0px rgba(171, 171, 171, 0.8);
+    background: white;
+    border-radius: 2.5px;
+    position: absolute;
+    height: 100px;
+    width: 22em;
+    z-index: 10;
+}

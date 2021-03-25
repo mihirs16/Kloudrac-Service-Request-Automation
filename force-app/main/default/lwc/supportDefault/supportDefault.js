@@ -13,6 +13,7 @@ import getTickets from '@salesforce/apex/DataService.getTickets';
 export default class SupportDefault extends LightningElement {
 
     @track listOfRecords;   // list of records to pass to recordsListView
+    @track filteredRecords;
     @track headers = [
         'Ticket Number',
         'Assigned To',
@@ -32,12 +33,22 @@ export default class SupportDefault extends LightningElement {
                 result[i].CreatedDate = thisOpenedOn.getDate().toString() + '-' + thisOpenedOn.getMonth().toString() + '-' + thisOpenedOn.getFullYear().toString(); 
             }
             this.listOfRecords = result;
+            this.filteredRecords = this.listOfRecords;
             console.log(result);
         })
         .catch((err) => {
             console.log(err);
             this.errorMessage(err);
         })
+    }
+
+    // filter displayed records
+    filterRecords(event) {
+        var filter = event.detail;
+        this.filteredRecords = this.listOfRecords.filter((record) => {
+            var fil = record.Name.toLowerCase().includes(filter.searchBy.toLowerCase());
+            return fil;
+        });
     }
 
     // utility: error toast
