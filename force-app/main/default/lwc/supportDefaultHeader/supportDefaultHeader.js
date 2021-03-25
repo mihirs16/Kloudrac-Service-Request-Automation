@@ -7,5 +7,16 @@
 * description: default page header for the Support Page
 */
 import { LightningElement } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class SupportDefaultHeader extends LightningElement {}
+export default class SupportDefaultHeader extends NavigationMixin(LightningElement) {
+    navigateToNewTicket() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: 'Ticket__c',
+                actionName: 'new'
+            }
+        });
+    }
+}

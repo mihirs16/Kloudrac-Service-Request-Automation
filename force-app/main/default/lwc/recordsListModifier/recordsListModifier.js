@@ -26,11 +26,13 @@ export default class RecordsListModifier extends LightningElement {
 
     handleSearch (event) {
         if(event) event.preventDefault();
-        const filterEvent = new CustomEvent('filter', {
-            detail: JSON.parse(JSON.stringify(this.filter)) 
-        });
-
-        this.dispatchEvent(filterEvent);
+        if(this.filter.searchBy || this.filter.openedOnFrom || this.filter.openedOnTo || this.filter.status || this.filter.priority) {
+            const filterEvent = new CustomEvent('filter', {
+                detail: JSON.parse(JSON.stringify(this.filter)) 
+            });
+    
+            this.dispatchEvent(filterEvent);
+        }
     }
 
     toggleFilter() {
