@@ -1,5 +1,16 @@
 <template>
-    <c-records-list-header headers={headers}></c-records-list-header>
+    <div class="slds-card slds-gutters slds-grid_align-space slds-m-around_small card__custom">
+        <template for:each={headers} for:item='item'>
+            <div key={item}>
+                <div class="slds-col slds-card__body slds-card__body_inner card-col__custom">
+                    {item}
+                    <div>
+                        <lightning-icon icon-name="utility:arrowdown" size="x-small"></lightning-icon>
+                    </div>
+                </div>
+            </div> 
+        </template>
+    </div>
     <template for:each={rows} for:item='record'>
         <div key={record.Id}>
             <c-records-list-card row={record}></c-records-list-card>

@@ -1,10 +1,10 @@
 <template>
     <div class="list-mod__custom">
         <div class="search-box__custom">
-            <lightning-input onchange={handleSearchInput} type="search" placeholder="Search Records..." label="Search Records" variant="label-hidden"></lightning-input>
+            <lightning-input onchange={handleSearchInput} name="searchBy" type="search" placeholder="Search Records..." label="Search Records" variant="label-hidden"></lightning-input>
         </div>
         <div>
-            <lightning-button-icon onclick={handleSearch} variant="border-filled" icon-name="utility:search"  alternative-text="Search" title="Search"></lightning-button-icon>
+            <lightning-button-icon onclick={handleRefresh} variant="border-filled" icon-name="utility:loop"  alternative-text="Search" title="Search"></lightning-button-icon>
         </div>
         <div>
             <lightning-button-icon-stateful selected={isFilter} onclick={toggleFilter} variant="border-filled" icon-name="utility:filter" alternative-text="Search" title="Search"></lightning-button-icon-stateful>
@@ -13,6 +13,40 @@
     <template if:true={isFilter}>
         <div class="slds-m-top_x-small slds-p-around_small filter-window__custom">
             Filters
+            <lightning-combobox 
+                class='slds-m-top_small'
+                label="Status"
+                placeholder="Select Ticket Status"
+                options={filterStatusOptions}
+                name="status"
+                onchange={handleSearchInput}
+                value={filter.status}
+            ></lightning-combobox>
+            <lightning-combobox 
+                class='slds-m-top_small'
+                label="Priority"
+                placeholder="Select Priority"
+                options={filterPriorityOptions}
+                name="priority"
+                onchange={handleSearchInput}
+                value={filter.priority}
+            ></lightning-combobox>
+            <lightning-input 
+                type='date' 
+                class='slds-m-top_small' 
+                label='Opened On (From)'
+                name="openedOnFrom"
+                onchange={handleSearchInput}
+                value={filter.openedOnFrom}
+            ></lightning-input>
+            <lightning-input 
+                type='date' 
+                class='slds-m-top_small' 
+                label='Opened On (To)'
+                onchange={handleSearchInput}
+                name="openedOnTo"
+                value={filter.openedOnTo}
+            ></lightning-input>
         </div>
     </template>
 </template>

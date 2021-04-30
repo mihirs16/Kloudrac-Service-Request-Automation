@@ -22,14 +22,13 @@ export default class SupportDefault extends LightningElement {
         'Priority'
     ];
 
-    // fetch ticket data
-    constructor() {
-        super();
-        
+    // function to fetch list data
+    fetchRecords() {
         getTickets()
         .then((result) => {
             for (var i = 0; i < result.length; i++) {
                 var thisOpenedOn = new Date(result[i].CreatedDate);
+                result[i]['dateCache'] = thisOpenedOn.getFullYear().toString() + '-' + thisOpenedOn.getMonth().toString() + '-' + thisOpenedOn.getDate().toString();
                 result[i].CreatedDate = thisOpenedOn.getDate().toString() + '-' + thisOpenedOn.getMonth().toString() + '-' + thisOpenedOn.getFullYear().toString(); 
             }
             this.listOfRecords = result;
@@ -42,13 +41,29 @@ export default class SupportDefault extends LightningElement {
         })
     }
 
+    // fetch ticket data
+    constructor() {
+        super();
+        this.fetchRecords();        
+    }
+
     // filter displayed records
     filterRecords(event) {
         var filter = event.detail;
         this.filteredRecords = this.listOfRecords.filter((record) => {
-            var fil = record.Name.toLowerCase().includes(filter.searchBy.toLowerCase());
+            var fil = true;
+            fil = filter.searchBy && filter.searchBy != '' ? record.Name.toLowerCase().includes(filter.searchBy.toLowerCase()) : fil;
+            fil = filter.openedOnFrom ? fil && Date.parse(record.dateCache) >= Date.parse(filter.openedOnFrom) : fil;
+            fil = filter.openedOnTo ? fil && Date.parse(record.dateCache) <= Date.parse(filter.openedOnTo) : fil;
+            fil = filter.status ? fil && record.Status__c == filter.status : fil;
+            fil = filter.priority ? fil && record.Priority__c == filter.priority : fil;
             return fil;
         });
+    }
+
+    // refresh list data on refresh event
+    refreshRecords() {
+        this.fetchRecords();
     }
 
     // utility: error toast
